@@ -1,29 +1,15 @@
-//start game
-//main ship attack
-//ship check
-//alien attack
-//ship check
-//attack or retreat function
-
-
-
-
-
 //------------------------Welcome message to the game--------------------------//
 function playGame() {
 
-    const start = prompt("ARE YOU READY TO PLAY?",'Yes/No');
-    if(start.toLowerCase() === 'yes') {
+    const start = prompt("ARE YOU READY TO PLAY?", 'Yes/No');
+    if (start.toLowerCase() === 'yes') {
         startGame()
     }
-     else {
+    else {
         window.location.reload
     }
-    }  
+}
 
-
-
-//-------------------------------Variables-------------------------------------//
 
 
 //-----------------------------Alien Ships-------------------------------------//
@@ -49,24 +35,24 @@ for (let i = 0; i <= 5; i++) {
     aliens[i] = new alien(hull, firePower, accuracy)
 }
 
-    //Alien ship method should attack and pass to Main ship
-    function alienAttack() {
-        while (ship.hull > 0) {
-            if (Math.random() < aliens[0].accuracy) {
-                ship.hull -= aliens[0].firePower;
-                console.log("You've been HIT!!")
-            } else {
-                console.log("The aliens MISSED!")
-            }
-        }
-    }
-    function alienHullCheck() {
-        if(aliens[0].hull > 0) {
-            console.log(`Alien Hull: ${aliens[0].hull}`)
+//Alien ship method should attack and pass to Main ship
+function alienAttack() {
+    while (ship.hull > 0) {
+        if (Math.random() < aliens[0].accuracy) {
+            ship.hull -= aliens[0].firePower;
+            console.log("You've been HIT!!")
         } else {
-            //
+            console.log("The aliens MISSED!")
         }
     }
+}
+function alienHullCheck() {
+    if (aliens[0].hull > 0) {
+        console.log(`Alien Hull: ${aliens[0].hull}`)
+    } else {
+
+    }
+}
 
 
 //-------------------------------Main Ship-------------------------------------//
@@ -80,36 +66,33 @@ let ship = {
 
 //Add method to attack Alien Ship, then pass to Alien Ship method
 
-function mainAttack() {
-    if (Math.random() < ship.accuracy) {
-        aliens[0].hull -= ship.firePower;
-        console.log("You attacked the alien ship and hit successful!!")
-        console.log(ship)
-    } else {
-        console.log("You attacked the alien and MISSED!")
-    }
-}
+// function mainAttack() {
+//     if (Math.random() < ship.accuracy) {
+//         aliens.hull -= ship.firePower;
+//         console.log("You attacked the alien ship and hit successful!!")
+
+//     } else {
+//         console.log("You attacked the alien and MISSED!")
+//     }
+// }
 
 //Method to check the health of the ships and end battle
 
 function shipHullCheck() {
-    if(ship.hull > 0) {
+    if (ship.hull > 0) {
         console.log(`Your ${ship.name} hull is ${ship.hull}/20`)
-    } else {
-        break;
     }
 }
 
-mainAttack();
-console.log(shipHullCheck())
-alienAttack()
-console.log(shipHullCheck())
-mainAttack()
-console.log(shipHullCheck())
 
 
 
-
+function startGame() {
+    mainAttack();
+    console.log(shipHullCheck())
+    alienAttack()
+    console.log(shipHullCheck())
+}
 
 
 
@@ -119,3 +102,28 @@ console.log(shipHullCheck())
 
 
 //------------------------------Main Game Object-------------------------------------//
+
+// playGame()
+
+for (let i in aliens) {
+    while (aliens[i].hull > 0) {
+        
+            if (Math.random() < ship.accuracy) {
+                aliens.hull -= ship.firePower;
+                console.log("You attacked the alien ship and hit successful!!")
+
+            } else {
+                console.log("You attacked the alien and MISSED!")
+            }
+        } 
+
+    // } let question = prompt("Alien ship is defeated. Would you like to RETREAT or ATTACK again?", "RETREAT/ATTACK")
+    //     if (question = "RETREAT") {
+    //         break;
+    //     } else {
+    //         i++
+    //     }
+}
+
+
+
